@@ -1,5 +1,11 @@
+import { Button } from "@/components/ui/button";
+
 const Home = () => {
-  return <h1 className="text-center text-3xl text-green-300">Olá mundo!</h1>;
+  return (
+    <div className="dark flex h-screen w-full items-center justify-center">
+      <Button>Button</Button>
+    </div>
+  );
 };
 
 export default Home;
