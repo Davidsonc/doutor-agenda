@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 const registerSchema = z.object({
   name: z.string().trim().min(1, { message: "Nome é obrigatório" }),
@@ -60,6 +61,22 @@ const SingUpForm = () => {
       {
         onSuccess: () => {
           router.push("/dashboard");
+        },
+        onError: (ctx) => {
+          // Handle specific error codes
+          console.log(ctx.error);
+          if (ctx.error.code === "USER_ALREADY_EXISTS") {
+            form.setError("email", {
+              type: "manual",
+              message: "E-mail já cadastrado.",
+            });
+            toast.error("E-mail já cadastrado.");
+          } else {
+            form.setError("root", {
+              type: "manual",
+              message: "Erro ao criar conta. Tente novamente.",
+            });
+          }
         },
       },
     );
