@@ -122,6 +122,7 @@ const LoginForm = () => {
                   "Entrar"
                 )}
               </Button>
+              
               <Button
                 variant="outline"
                 className="w-full"

@@ -6,6 +6,7 @@ import { db } from "@/db";
 import { usersToClinicsTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
 
+import Foto from "./components/foto";
 import SignOutButton from "./components/sign-out-button";
 
 const DashboardPage = async () => {
@@ -29,8 +30,19 @@ const DashboardPage = async () => {
       <h1>Dashboard</h1>
       {session ? (
         <div>
+          <h2>Informações do Usuário</h2>
+
+          {session.user.image && <Foto urlDaFoto={session.user.image} />}
           <p>Bem-vindo, {session?.user?.name}!</p>
           <p>Email: {session?.user?.email}</p>
+          <h2>Suas Clínicas:</h2>
+          <ul>
+            {clinics.map((userClinic) => (
+              <li key={userClinic.clinic.id}>
+                {userClinic.clinic.name} (ID: {userClinic.clinic.id})
+              </li>
+            ))}
+          </ul>
           <SignOutButton />
         </div>
       ) : (
