@@ -29,6 +29,15 @@ export const auth = betterAuth({
       });
       // TODO: Ao adaptar para o usuário ter múltiplas clínicas, deve-se mudar esse código
       const clinic = clinics?.[0];
+      if (!clinic) {
+        return {
+          user: {
+            ...user,
+            clinic: undefined,
+          },
+          session,
+        };
+      }
       return {
         user: {
           ...user,
