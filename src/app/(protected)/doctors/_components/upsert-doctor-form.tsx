@@ -328,7 +328,7 @@ const UpsertDoctorForm = ({ onSuccess }: UpsertDoctorFormProps) => {
             control={form.control}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Horário inicial de disponibilidade</FormLabel>
+                <FormLabel>Horário Final de disponibilidade</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
