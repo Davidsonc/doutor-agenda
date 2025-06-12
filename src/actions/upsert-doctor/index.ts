@@ -1,7 +1,7 @@
 "use server";
 
-// import dayjs from "dayjs";
-// import utc from "dayjs/plugin/utc";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
@@ -12,7 +12,7 @@ import { actionClient } from "@/lib/next-safe-action";
 
 import { upsertDoctorSchema } from "./schema";
 
-// dayjs.extend(utc);
+dayjs.extend(utc);
 
 export const upsertDoctor = actionClient
   .schema(upsertDoctorSchema)
